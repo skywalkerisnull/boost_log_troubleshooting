@@ -73,7 +73,7 @@ if(NOT DEFINED ${CMAKE_TOOLCHAIN_FILE})
   execute_process (COMMAND ${VCPKG_EXEC} install ${BOOST_LOG_PROJECT_DEPENDENCIES} WORKING_DIRECTORY ${VCPKG_ROOT})
 endif()
 
-find_package (Boost REQUIRED)
+find_package (Boost 1.75.0 REQUIRED COMPONENTS thread log filesystem chrono)
 include_directories (${Boost_INCLUDE_DIRS})
 include_directories (${CMAKE_CURRENT_SOURCE_DIR} )
 message ("boost lib: ${Boost_LIBRARIES}, inc:${Boost_INCLUDE_DIRS}")
@@ -92,6 +92,7 @@ add_subdirectory ("Logging")
 
 ## 1. Compile...
 add_executable (boost_log_trouble main.cpp)
+target_include_directories (boost_log_trouble PUBLIC ${Boost_INCLUDE_DIRS})
 
 ## 2. Link...
 target_link_libraries (boost_log_trouble ${Boost_LIBRARIES} logging)
