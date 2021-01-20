@@ -94,7 +94,7 @@ add_subdirectory ("Logging")
 add_executable (boost_log_trouble main.cpp)
 
 ## 2. Link...
-target_link_libraries (boost_log_trouble ${Boost_LIBRARIES})
+target_link_libraries (boost_log_trouble ${Boost_LIBRARIES} logging)
 
 ## 3. Install...
 # install( TARGETS ${MAIN_EXE_NAME} RUNTIME DESTINATION bin )

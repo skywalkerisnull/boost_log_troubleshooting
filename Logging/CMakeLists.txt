@@ -7,4 +7,5 @@ include_directories( ${CMAKE_CURRENT_SOURCE_DIR} )
 file( GLOB SOURCES *.h *.cpp )
 
 # Add source to this project's executable.
-add_executable (logging "Logging.h" "Logging.cpp")
+add_library (logging "Logging.h" "Logging.cpp")
+target_link_libraries (logging ${Boost_LIBRARIES} )
